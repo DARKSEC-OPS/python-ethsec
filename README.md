@@ -44,6 +44,47 @@ _Active Directory_
 
 _Windows Command Line_
 
+set: shows you the path that the commands will be executed in 
+
+ver: shows version of OS 
+
+systeminfo: shows detailed OS information, system details, processor and memory
+
+| more: pipes it into a more readable format where you can move through pages using space.
+
+driverquery: information about the system driver
+
+ipconfig: shows IP address, subnet mask, and default gateway2
+
+ipconfig /all: more information about network config including BNS and DHCP
+
+DNS: Domain Name Systems - responsible for resolving hostnames to their respective IP addresses
+
+DHCP: Dynamic Host Configuration Protocol - Network management tool used to automatically assign IP addresses and other communication parameters to devices connected to the network
+
+ping target_name: if a server is up. We send a request they send one back. measured by milliseconds (ms)
+
+tracert: traces the route that the ping took place. how many routers it jumped
+<img width="1216" height="680" alt="image" src="https://github.com/user-attachments/assets/d657c77f-6640-488e-a257-0d348b202d27" />
+
+nslookup domainname: looks up the ip address for whatever domain name you insert
+
+netstat: displays the current network connections and listening ports. port 22 = SSH 
+- -a: displays all established connections and listening ports
+- -b: shows the program associated with each listening port and established connection
+- -o reveals the process ID PID associated with the connection
+- -n uses a numerical form for addresses and port numbers
+
+dir: view child directories
+- dir /a: displays hidden and system files as well
+- dir /s: displays files in the current directory and all subdirectories
+
+tree: visually shows the child and subdirectories
+ 
+mkdir directory_name: makes a new directory
+- rmdir directory_name: removes a directory
+
+
 
 **Linux Commands**
 
@@ -70,3 +111,39 @@ find /: The command starts a search from the root directory (/), which ensures t
  2>/dev/null: This redirects any "Permission denied" error messages to /dev/null (a special file that discards all data written to it). This keeps the output clean and shows only the file you are looking for. 
 
 du -b: check file size
+
+ifconfig: shows IP address, subnet mask, and default gateway
+
+nslookup domainname: looks up the ip address for whatever domain name you insert
+
+netstat: displays the current network connections and listening ports. port 22 = SSH 
+- -a: displays all established connections and listening ports
+- -b: shos the program associated with each listening port and established connection
+- -o reveals the process ID PID associated with the connection
+- -n uses a numerical form for addresses and port numbers
+
+dir: view child directories
+- dir /a: displays hidden and system files as well
+- dir /s: displays files in the current directory and all subdirectories
+
+tree: visually shows the child and subdirectories
+
+mkdir directory_name: makes a new directory
+- rmdir directory_name: removes a directory
+
+type: to see the contents of a file
+
+tasklist /: shows the open tasks
+- /FI "imagename eq sshd.exe": will show all files with sshd.exe
+
+taskkill /PID: will kill the task associated w/ that PID
+
+chkdsk: checks the file system and disk volumes for error and bad sectors
+
+sfc /scannow: scans system files for corruption and repairs them if possible
+
+shutdown /s: shutdown system
+- /r: restart system
+- /a: abort system reboot
+
+
