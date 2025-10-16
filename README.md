@@ -84,10 +84,62 @@ tree: visually shows the child and subdirectories
 mkdir directory_name: makes a new directory
 - rmdir directory_name: removes a directory
 
+_Powershell_
+
+- It combines a command-line interface and a scripting language built on the .NET framework. Unlike older text-based command-line tools, PowerShell is object-oriented, which means it can handle complex data types and interact with system components more effectively. Initially exclusive to Windows
+
+Get-Command: Shows all the possible commands
+  - Get-Command -CommandType "insert type": shows a specific type of commands based on the type
+
+Get-Help: Can shows useful information on any command
+
+Get-Alias: Lists all the aliases available
+
+Find-Module: Can find other modules not downloaded and download from the repositories
+- Find-Module -Name "Powershell"
+
+Install-Module: Installs module
+- Install Module -Name "PowershellGet"
+
+Get-ChildItem: The ls of Powershell
+- Get-childitem -path .:\Users: gets the contents of users page
+- Get-childitem | Sort-Object Length: gets items then sorts them by length
+
+Set-Location: The cd of Powershell
+
+File editing:
+- copy-item
+- move-item
+- remove-item
+- Get-content: view content. The type and cat of powershell
+
+Get-Childitem | Select-Object Name, Length | Sort-Object Length: Will show me only the names and objects and sort by the length size
+
+Select-string: the grep of Powershell. will filter out text patterns within files
+
+Get-localuser: gets all the user accounts
+
+Get-ComputerInfo: like if/ipconfig but better
+
+Get-IPConfiguration: gets IPconfiguration, DNS Servers
+
+Get-Process: Detailed view of ongoing processes, CPU, and memory usage
+
+Get-Service: Retrieval of services that are running, or stopped
+
+Get-NetTCPConnections: shows the open local and remote endpoints. good for looking at holes in systems
+
+Get-Filehash: gets the hash associated with the file, helps verify integrity of files
+
+Get-location ~: go home
+
+Invoke-command: godlike command that can send commands to remove services
 
 
 **Linux Commands**
 
+curl ipinfo.io: will give my exact IP address
+- curl ipinfo.io/IP_address: will give exact location of said address
 find .:This initiates the search in the current directory (.) and its subdirectories.
 
 -type f:This restricts the search to regular files only, excluding directories, symbolic links, etc.
