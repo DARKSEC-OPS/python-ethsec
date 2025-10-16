@@ -13,6 +13,9 @@ Phase 1:
 
 **Master Notes**
 
+[Internet Hacking 
+](https://www.youtube.com/watch?v=dZwbb42pdtg)
+
 **TryHackMe CyberSecurity Foundamentals**
 
 _Types of Browsers_
