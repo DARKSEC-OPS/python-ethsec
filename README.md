@@ -216,3 +216,101 @@ shutdown /s: shutdown system
 - /a: abort system reboot
 
 
+**Network Concepts**
+
+ISO: International Organization for Standardization
+
+_OSI Model: Open Systems Interconnection, conceptual model created by the OSI. People Do Nothing To Save People's Asses_
+
+7. Application Layer
+   - Providing services and interfaces to applications
+   - ex: HTTP, FTP, DNS, POP3, SMTP, IMAP
+   
+6. Presentation Layer
+   - Makes sure the data is presentable (encoding, compression and encryption)
+   - ex: ASCII or Unicode
+   
+5. Session Layer
+   - Responsible for maintaining and synchronizing communication between application running on different hosts.
+   - ex: NFS (Network File System) and RPC (Remote Procedure Call)
+   
+4. Transport Layer
+   - Enables end-to-end communcation between running applicatations on different hosts
+   - ex: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
+   
+3. Network Layer
+   - Concerned with sending data between different networks.
+   - ex: IP (internet protocol), ICMP (Internet Control Message Protocol), VPN (Virtual Private Network - IPSex and SSL/TLS VPN
+   
+Layer 2: Data Link Layer
+   - The medium to transfer the signal through devices under the same network (i.e offices linked with a network switch)
+   - ex: MAC address (Media Access Control)
+
+<img width="985" height="550" alt="image" src="https://github.com/user-attachments/assets/cd8bf97c-f0fe-4a94-963d-819736398a9b" />
+
+Layer 1: Physical Layer
+   - The physical connection between devices (optical fibre cable, WIFI radio bands, 2.4G/5/6 Hz bands
+   - medium: type of wire and the definition of the binary digits 0 and 1
+
+_TCP/IP Model: developed in 1970s by the DoD. Goes top to bottom using the below layers_
+
+Layer 5, 6, 7: Application Layer - It all starts when the user inputs the data they want to send into the application. For example, you write an email or an instant message and hit the send button. The application formats this data and starts sending it according to the application protocol used, using the layer below it, the transport layer.
+
+Layer 4: Transport Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
+
+Layer 3: Internet Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
+
+Layer 2: Data Link Layer - The Ethernet or WiFi receives the IP packet and adds the proper header and trailer, creating a frame.
+
+_RFC 1918 defines the following three ranges of private IP addresses:
+_
+    10.0.0.0 - 10.255.255.255 (10/8)
+    172.16.0.0 - 172.31.255.255 (172.16/12)
+    192.168.0.0 - 192.168.255.255 (192.168/16)
+
+_UDP and TCP_
+
+UDP: User Datagram Protocol - Connectionless. Does not provide confirmation that data packets have been received by the destination. 
+- Functions in Layer 4 - Transport
+- Uses port numbers to identify destination (between 1 and 65535
+- Faster than TDP because no confirmation is needed
+
+TCP: Transmission Control Protocol - Connection based. 
+- Layer 4 protocol
+- Requires established connection before data can be sent
+- Sequence number used to identify data --> receiver acknowledges data has been received
+- Three-way-handshake
+ 1. SYN Packet: Client initiates request by sending SYN packet to the server (contains the client's randomly chosesn initial sequence number)
+ 2. SYN-ACK Packet: Server responds with a SYN-ACK packet with their randomly chosen number
+ 3. ACK Packet: Client sends an ACK packet to acknowledge the reception of the SYN-ACK Packet
+
+<img width="937" height="475" alt="image" src="https://github.com/user-attachments/assets/63194c38-1295-471b-a49d-d495b8769e73" />
+
+
+Encapsulation: Every layer adding a header (sometimes a trailer)
+
+<img width="986" height="357" alt="image" src="https://github.com/user-attachments/assets/fe0bc2a3-456a-4a01-ae00-fb55db552b37" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
