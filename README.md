@@ -16,6 +16,20 @@ Phase 1:
 [Internet Hacking 
 ](https://www.youtube.com/watch?v=dZwbb42pdtg)
 
+
+_Turning Binary Code to Decimal_
+
+1. power 2's table
+
+128   64   32   16   8   4   2   1
+
+2. 1 = on, 0 = off
+
+3. decode using code per octet
+
+Binary: 11000000 . 10101000 . 00000001 . 00010101
+Decimal: 192.168.1.21
+
 **TryHackMe CyberSecurity Foundamentals**
 
 _Types of Browsers_
