@@ -48,6 +48,110 @@ Types of Vulnerabilities and Exploits:
 
 [Exploit Database](https://www.exploit-db.com/): Provides working exploit codes
 
+**Network Concepts**
+
+ISO: International Organization for Standardization
+
+_OSI Model: Open Systems Interconnection, conceptual model created by the OSI. People Do Nothing To Save People's Asses_
+
+7. Application Layer
+   - Providing services and interfaces to applications
+   - ex: HTTP, FTP, DNS, POP3, SMTP, IMAP
+   
+6. Presentation Layer
+   - Makes sure the data is presentable (encoding, compression and encryption)
+   - ex: ASCII or Unicode
+   
+5. Session Layer
+   - Responsible for maintaining and synchronizing communication between application running on different hosts.
+   - ex: NFS (Network File System) and RPC (Remote Procedure Call)
+   
+4. Transport Layer
+   - Enables end-to-end communcation between running applicatations on different hosts
+   - ex: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
+   
+3. Network Layer
+   - Concerned with sending data between different networks.
+   - ex: IP (internet protocol), ICMP (Internet Control Message Protocol), VPN (Virtual Private Network - IPSex and SSL/TLS VPN
+   
+Layer 2: Data Link Layer
+   - The medium to transfer the signal through devices under the same network (i.e offices linked with a network switch)
+   - ex: MAC address (Media Access Control)
+
+<img width="985" height="550" alt="image" src="https://github.com/user-attachments/assets/cd8bf97c-f0fe-4a94-963d-819736398a9b" />
+
+Layer 1: Physical Layer
+   - The physical connection between devices (optical fibre cable, WIFI radio bands, 2.4G/5/6 Hz bands
+   - medium: type of wire and the definition of the binary digits 0 and 1
+
+_TCP/IP Model: developed in 1970s by the DoD. Goes top to bottom using the below layers_
+
+Layer 5, 6, 7: Application Layer - It all starts when the user inputs the data they want to send into the application. For example, you write an email or an instant message and hit the send button. The application formats this data and starts sending it according to the application protocol used, using the layer below it, the transport layer.
+
+Layer 4: Transport Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
+
+Layer 3: Internet Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
+
+Layer 2: Data Link Layer - The Ethernet or WiFi receives the IP packet and adds the proper header and trailer, creating a frame.
+
+_RFC 1918 defines the following three ranges of private IP addresses:
+_
+    10.0.0.0 - 10.255.255.255 (10/8)
+    172.16.0.0 - 172.31.255.255 (172.16/12)
+    192.168.0.0 - 192.168.255.255 (192.168/16)
+
+_UDP and TCP_
+
+UDP: User Datagram Protocol - Connectionless. Does not provide confirmation that data packets have been received by the destination. 
+- Functions in Layer 4 - Transport
+- Uses port numbers to identify destination (between 1 and 65535
+- Faster than TDP because no confirmation is needed
+
+TCP: Transmission Control Protocol - Connection based. 
+- Layer 4 protocol
+- Requires established connection before data can be sent
+- Sequence number used to identify data --> receiver acknowledges data has been received
+- Three-way-handshake
+ 1. SYN Packet: Client initiates request by sending SYN packet to the server (contains the client's randomly chosesn initial sequence number)
+ 2. SYN-ACK Packet: Server responds with a SYN-ACK packet with their randomly chosen number
+ 3. ACK Packet: Client sends an ACK packet to acknowledge the reception of the SYN-ACK Packet
+
+<img width="937" height="475" alt="image" src="https://github.com/user-attachments/assets/63194c38-1295-471b-a49d-d495b8769e73" />
+
+
+Encapsulation: Every layer adding a header (sometimes a trailer)
+
+<img width="986" height="357" alt="image" src="https://github.com/user-attachments/assets/fe0bc2a3-456a-4a01-ae00-fb55db552b37" />
+
+**Network Essentials**
+
+To access network need:
+1. IP address along w/ subnet mask
+2. Router (gateway/oprah)
+3. DNS server
+
+DHCP (Dynamic Host Configuration Protocol): Application level relies on UDP (server listens on UDP port  67, client sends from UDP port 68. Relies on DORA
+- Discover: client broadcasts a DHCPDISCOVER message seeking the locak DHCP server if one exists
+- Offer: Server responds with a DHCPOFFER message with an IP address available for the client to accept
+- Request: client responds with a DHCPREQUEST message to indicate that it has accepted the offered IP
+- Acknowledge: Server responds with a DHCPACK message to confirm that the offered IP address is now assigned to the client.
+
+ARP (Address Resolution Protocol): Layer 2 - deals w/MAC addresses. makes it possible to find the MAC address of another device on the same ethernet
+
+<img width="982" height="568" alt="image" src="https://github.com/user-attachments/assets/76518e54-a709-40bb-9703-57a4f79c4640" />
+
+ICMP (Internet Control Message Protocol): 
+- Ping: makes sure target is alive and measure RTT (round-trip time) to get the response back to the client
+- traceroute: discovers the route from your host to the target
+
+Routing Algorithms:
+- OSPF (Open Shortest Path First): calculates most efficient path for data transmission.
+- EIGRP (Enhanced Interior Gateway Routing Protocol): CISCO routing protocol - uses different routing algorithms too confirm which network will have the lest cost (delay)
+- BGP (Border Gateway Protocol): Primary routing protocol - allows for differnt ISPs to exchange routing information and establish paths to travel between those networks
+- RIP (Routing Information Protocol): Used for smaller networks. Routers share info about the networks they can reach and the number of hops (routers) required to get there. 
+
+NAT (Network Address Translation): Allows for seamless translation of multiple private (devices) on a network 
+
 **WINDOWS**
 
 - To create an Azure Microsoft VM (https://youtu.be/X1CM3rZwGn8?si=GN8qGVM63flvn_Jn)
@@ -159,6 +263,8 @@ curl ipinfo.io: will give my exact IP address
 - curl ipinfo.io/IP_address: will give exact location of said address
 find .:This initiates the search in the current directory (.) and its subdirectories.
 
+traceroute: discovers the route from your host to the target
+
 -type f:This restricts the search to regular files only, excluding directories, symbolic links, etc.
 
 -size 1033c: This specifies that the file size must be exactly 1033 bytes. The c suffix indicates bytes.
@@ -216,80 +322,6 @@ shutdown /s: shutdown system
 - /a: abort system reboot
 
 
-**Network Concepts**
-
-ISO: International Organization for Standardization
-
-_OSI Model: Open Systems Interconnection, conceptual model created by the OSI. People Do Nothing To Save People's Asses_
-
-7. Application Layer
-   - Providing services and interfaces to applications
-   - ex: HTTP, FTP, DNS, POP3, SMTP, IMAP
-   
-6. Presentation Layer
-   - Makes sure the data is presentable (encoding, compression and encryption)
-   - ex: ASCII or Unicode
-   
-5. Session Layer
-   - Responsible for maintaining and synchronizing communication between application running on different hosts.
-   - ex: NFS (Network File System) and RPC (Remote Procedure Call)
-   
-4. Transport Layer
-   - Enables end-to-end communcation between running applicatations on different hosts
-   - ex: TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
-   
-3. Network Layer
-   - Concerned with sending data between different networks.
-   - ex: IP (internet protocol), ICMP (Internet Control Message Protocol), VPN (Virtual Private Network - IPSex and SSL/TLS VPN
-   
-Layer 2: Data Link Layer
-   - The medium to transfer the signal through devices under the same network (i.e offices linked with a network switch)
-   - ex: MAC address (Media Access Control)
-
-<img width="985" height="550" alt="image" src="https://github.com/user-attachments/assets/cd8bf97c-f0fe-4a94-963d-819736398a9b" />
-
-Layer 1: Physical Layer
-   - The physical connection between devices (optical fibre cable, WIFI radio bands, 2.4G/5/6 Hz bands
-   - medium: type of wire and the definition of the binary digits 0 and 1
-
-_TCP/IP Model: developed in 1970s by the DoD. Goes top to bottom using the below layers_
-
-Layer 5, 6, 7: Application Layer - It all starts when the user inputs the data they want to send into the application. For example, you write an email or an instant message and hit the send button. The application formats this data and starts sending it according to the application protocol used, using the layer below it, the transport layer.
-
-Layer 4: Transport Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
-
-Layer 3: Internet Layer - The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
-
-Layer 2: Data Link Layer - The Ethernet or WiFi receives the IP packet and adds the proper header and trailer, creating a frame.
-
-_RFC 1918 defines the following three ranges of private IP addresses:
-_
-    10.0.0.0 - 10.255.255.255 (10/8)
-    172.16.0.0 - 172.31.255.255 (172.16/12)
-    192.168.0.0 - 192.168.255.255 (192.168/16)
-
-_UDP and TCP_
-
-UDP: User Datagram Protocol - Connectionless. Does not provide confirmation that data packets have been received by the destination. 
-- Functions in Layer 4 - Transport
-- Uses port numbers to identify destination (between 1 and 65535
-- Faster than TDP because no confirmation is needed
-
-TCP: Transmission Control Protocol - Connection based. 
-- Layer 4 protocol
-- Requires established connection before data can be sent
-- Sequence number used to identify data --> receiver acknowledges data has been received
-- Three-way-handshake
- 1. SYN Packet: Client initiates request by sending SYN packet to the server (contains the client's randomly chosesn initial sequence number)
- 2. SYN-ACK Packet: Server responds with a SYN-ACK packet with their randomly chosen number
- 3. ACK Packet: Client sends an ACK packet to acknowledge the reception of the SYN-ACK Packet
-
-<img width="937" height="475" alt="image" src="https://github.com/user-attachments/assets/63194c38-1295-471b-a49d-d495b8769e73" />
-
-
-Encapsulation: Every layer adding a header (sometimes a trailer)
-
-<img width="986" height="357" alt="image" src="https://github.com/user-attachments/assets/fe0bc2a3-456a-4a01-ae00-fb55db552b37" />
 
 
 
