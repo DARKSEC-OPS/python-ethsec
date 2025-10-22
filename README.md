@@ -267,6 +267,8 @@ tracert: traces the route that the ping took place. how many routers it jumped
 
 nslookup domainname: looks up the ip address for whatever domain name you insert
 
+dig a <hostname>: find the IP address associated with a domain name
+
 netstat: displays the current network connections and listening ports. port 22 = SSH 
 - -a: displays all established connections and listening ports
 - -b: shows the program associated with each listening port and established connection
@@ -372,6 +374,10 @@ du -b: check file size
 ifconfig: shows IP address, subnet mask, and default gateway
 
 nslookup domainname: looks up the ip address for whatever domain name you insert
+
+dig a <hostname>: find the IP address associated with a domain name
+
+nc <IP Address> 80: creates a network connection for reading and writing messages
 
 whois: looks up the file on the WHOIS website, which has the details of who registered the domain. Public information
 
