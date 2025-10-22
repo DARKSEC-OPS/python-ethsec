@@ -17,6 +17,10 @@ Phase 1:
 ](https://www.youtube.com/watch?v=dZwbb42pdtg)
 
 
+**Subnetting (NC)**
+
+Subnet Mask - Tells us how big our network is and how many IPs we have. 
+
 _Turning Binary Code to Decimal_
 
 1. power 2's table
@@ -29,6 +33,30 @@ _Turning Binary Code to Decimal_
 
 Binary: 11000000 . 10101000 . 00000001 . 00010101
 Decimal: 192.168.1.21
+
+11000000 . 10101000. 000100000 . 00000101 = 192.168.32.5
+11111111 . 11111111. 111111111 . 00000000 = 255.255.255.0
+
+How to find out how many IP addresses can be on this network ^^
+2^n = n = number of zeros (host bits)
+2^8 = 256
+256 - 2 (subtract the two unusuable IP addresses, first and last one)
+254 = Usable IPS
+
+Q - I need more IP addresses what do I do? 
+
+11000000 . 10101000. 000100000 . 00000101 = 192.168.32.5
+11111111 . 11111111. 111111110 . 00000000 = 255.255.254.0
+
+More networks = more bits... steal them from the hosts (0). Below example needs 4 more networks, create second nose person chart
+
+128  64  32  16  8  4  2  1
+256  128 64  32  16 8  4  2
+
+<img width="1869" height="975" alt="image" src="https://github.com/user-attachments/assets/2823479d-1bb3-44a1-8229-8f1a01746da7" />
+
+ <img width="1907" height="1050" alt="image" src="https://github.com/user-attachments/assets/94df45f4-5e83-4447-ba7c-94b63b2a4a10" />
+
 
 **TryHackMe CyberSecurity Foundamentals**
 
