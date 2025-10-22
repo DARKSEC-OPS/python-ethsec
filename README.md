@@ -17,7 +17,7 @@ Phase 1:
 ](https://www.youtube.com/watch?v=dZwbb42pdtg)
 
 
-**Subnetting (NC)**
+**Subnetting (NC) **
 
 Subnet Mask - Tells us how big our network is and how many IPs we have. 
 
@@ -180,6 +180,55 @@ Routing Algorithms:
 
 NAT (Network Address Translation): Allows for seamless translation of multiple private (devices) on a network 
 
+**Networking Core Protocols**
+
+DNS (Domain Name System): Operates in Application level - layer 7
+1. A Record: A address record maps a hostname to one or more IPv4 addresses
+2. AAAA Record: Same as A record but for IPv6.
+3. CNAME Record: Canonical Name record. Maps a domain name to another domain name. ex - example.com mapped to www.example.com
+4. MX Record: Mail exchange record specifies the mail server responsible for handling emails for a domain
+
+HTTP / HTTPS: Hypertext Transfer Protocol (Secure). Uses TCP, typically on port 80 and 443
+Common Commands
+- GET: Retrieves data from the server (file or image)
+- POST: allows us to submit new data to the servier (updloading a file or form)
+- PUT: used to create a new resource on the server and to update and overwrite existing information
+- DELETE: used to delete a specified file of resource on the server
+
+FTP (File Transfer Protocol): Quicker than HTTP when dealing w/ file transfers. TCP port 21
+Common Commands
+- USER: used to input the username
+- PASS: used to enter the password
+- RETR: used to download a file from the FTP server to the client
+- STOR: used to upload a file from the client to the FTP server
+
+SMTP (Simple Mail Transfer Protocol): Process in which mail client talks with a mail server and how a mail server talks to one another.  Port 25
+Common Commands
+- HELO or EHLO: Initiates an SMTP session
+- MAIL FROM: specifies the sender's email address
+- RCPT TO: specifies the recipient's email address
+- DATA: inidiates that the client will begin sending the content of the email message
+- . : is sent on a line by itself to indicate the end of the message
+
+POP3 (Post Office Protocol V3): Equivalent to checking your post office for mail sent through SMTP. Port 110
+Common Commands
+- USER <username> identifies the user
+- PASS <password> provides the user’s password
+- STAT requests the number of messages and total size
+- LIST lists all messages and their sizes
+- RETR <message_number> retrieves the specified message
+- DELE <message_number> marks a message for deletion
+- QUIT ends the POP3 session applying changes, such as deletions
+
+IMAP (Internet Message Access Protocol): allows for synchronization of mailboxes across multiple devices. Port 143
+- LOGIN <username> <password> authenticates the user
+- SELECT <mailbox> selects the mailbox folder to work with
+- FETCH <mail_number> <data_item_name> Example fetch 3 body[] to fetch message number 3, header and body.
+- MOVE <sequence_set> <mailbox> moves the specified messages to another mailbox
+- COPY <sequence_set> <data_item_name> copies the specified messages to another mailbox
+- LOGOUT logs out
+
+
 **WINDOWS**
 
 - To create an Azure Microsoft VM (https://youtu.be/X1CM3rZwGn8?si=GN8qGVM63flvn_Jn)
@@ -295,6 +344,11 @@ traceroute: discovers the route from your host to the target
 
 -type f:This restricts the search to regular files only, excluding directories, symbolic links, etc.
 
+telnet <IP Address>: connects to a website 
+- GET / file.html: gets a specific file on that page
+
+ftp <IP address>: access the file transfer server on a website. Make sure you change to type ASCII before getting
+
 -size 1033c: This specifies that the file size must be exactly 1033 bytes. The c suffix indicates bytes.
 
 ! -executable: This negates the -executable condition, meaning it finds files that are not executable.
@@ -318,6 +372,8 @@ du -b: check file size
 ifconfig: shows IP address, subnet mask, and default gateway
 
 nslookup domainname: looks up the ip address for whatever domain name you insert
+
+whois: looks up the file on the WHOIS website, which has the details of who registered the domain. Public information
 
 netstat: displays the current network connections and listening ports. port 22 = SSH 
 - -a: displays all established connections and listening ports
