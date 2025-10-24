@@ -228,6 +228,26 @@ IMAP (Internet Message Access Protocol): allows for synchronization of mailboxes
 - COPY <sequence_set> <data_item_name> copies the specified messages to another mailbox
 - LOGOUT logs out
 
+**Networking Security Protocols**
+
+TLS (Transport Layer Security): added to existing protocols to protect communication confidentiality, integrity, and authenticity (HTTPS, POP3S, SMTPS, IMAPS)
+- Operates in the Transport Layer (4)
+
+SSH (Secure Shell): secure way of accessing remot systems
+
+[Let's Encrypt: Free Security Certificates](https://letsencrypt.org/)
+
+HTTP over TLS = HTTPS: Adds a second step (establishing a TLS session) to the process
+1. Establish a TCP three-way handshake with the target server
+2. Establish a TLS session
+3. Communication using HTTP protocol, for example issuing HTTP request such as GET / HTTP/1.1
+
+Without TLS =
+<img width="1033" height="653" alt="image" src="https://github.com/user-attachments/assets/30fe4795-aacc-4736-9433-f3968c814b4c" />
+
+With TLS = 
+<img width="1032" height="745" alt="image" src="https://github.com/user-attachments/assets/80585762-23ad-4e83-9caf-f2152ffc2237" />
+
 
 **WINDOWS**
 
