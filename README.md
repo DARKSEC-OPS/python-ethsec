@@ -240,13 +240,35 @@ SSH (Secure Shell): secure way of accessing remot systems
 HTTP over TLS = HTTPS: Adds a second step (establishing a TLS session) to the process
 1. Establish a TCP three-way handshake with the target server
 2. Establish a TLS session
-3. Communication using HTTP protocol, for example issuing HTTP request such as GET / HTTP/1.1
+  - Encrypts the content. Only way of accessing is encryption key
+     - 
+4. Communication using HTTP protocol, for example issuing HTTP request such as GET / HTTP/1.1
 
 Without TLS =
 <img width="1033" height="653" alt="image" src="https://github.com/user-attachments/assets/30fe4795-aacc-4736-9433-f3968c814b4c" />
 
 With TLS = 
 <img width="1032" height="745" alt="image" src="https://github.com/user-attachments/assets/80585762-23ad-4e83-9caf-f2152ffc2237" />
+
+TCP Ports
+<img width="1220" height="742" alt="image" src="https://github.com/user-attachments/assets/a78672d7-749f-42c5-89d5-1638f0ea41b8" />
+
+SSH (Secure Shell) - OpenSSH - Port 22
+Benefits:
+- Secure authentication: password based and supports public key and two-factor auth
+- Confidentiality: end-to-end encryption, protecting against eavesdropping. Provides new server keys to protect against man-in-the-middle attacks
+- Integrity: Cryptography protects the integrity of the traffic
+- Tunneling: can create a secure "tunnel" to route other protocols through SSH. Leads to VPN-like connection
+- X11 Forwarding: allows use of GUI over the network if you connect to a Unix-like system
+
+SFTP (SSH File Transfer Protocol) - Secure file transfer, port 22
+
+FTPS (File Transfer Protocol Secure)
+
+_VPN_
+
+<img width="997" height="672" alt="image" src="https://github.com/user-attachments/assets/d9b7925d-2ad8-4d8c-98cb-7042ccc09459" />
+
 
 
 **WINDOWS**
@@ -370,6 +392,8 @@ telnet <IP Address>: connects to a website
 - GET / file.html: gets a specific file on that page
 
 ftp <IP address>: access the file transfer server on a website. Make sure you change to type ASCII before getting
+
+sftp username@hostname: secure file transfer
 
 -size 1033c: This specifies that the file size must be exactly 1033 bytes. The c suffix indicates bytes.
 
