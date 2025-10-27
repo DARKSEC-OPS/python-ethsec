@@ -57,6 +57,9 @@ More networks = more bits... steal them from the hosts (0). Below example needs 
 
  <img width="1907" height="1050" alt="image" src="https://github.com/user-attachments/assets/94df45f4-5e83-4447-ba7c-94b63b2a4a10" />
 
+ When you have the amount of networks needed = hack the bits starting from the left to the right
+ When you have the amount of hosts needed = SAVE the bits from right to left and hack the ones left over
+
 
 **TryHackMe CyberSecurity Foundamentals**
 
@@ -269,7 +272,21 @@ _VPN_
 
 <img width="997" height="672" alt="image" src="https://github.com/user-attachments/assets/d9b7925d-2ad8-4d8c-98cb-7042ccc09459" />
 
+**Wireshark: The Basics**
 
+Wireshark: An open-source tool used to perform pacjet sniffing and investigating live traffic. One of the best packet analysis tools
+- used to troubleshoot network problems
+- detect security anomalies (rogue hosts, abnormal port usage, and suspicious traffic
+- investgate and learn protocol details such as response codes and payload data
+
+Details Pane
+- Frame/Packet: Layer1 - Physical Layer of the OSI - shows details
+- SOURCE (MAC): Layer 2 - destination MAC Addresses from the Data Link layer of OSI Model
+- Souce (IP): Layer 3 - Source and destination IPv4 Addresses; from the Network later of the OSI Model
+- Protocol: Layer 4 - details of the UDP/TCP source and destination port. Transport Layer
+- Protocol Errors - Continuation of the 4 layer shows specific segements from TCP that needed to be reassembled
+- Application Protocol: Layer 5 - details specific to the protocol used (HTTP, FTP, SMB). Application Layer
+- Application Data: extension of the 5th layer can show the application-specific data
 
 **WINDOWS**
 
