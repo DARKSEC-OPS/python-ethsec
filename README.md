@@ -314,11 +314,29 @@ _Methods of capturing traffic_
 
 **Wireshark: Packet Operations**
 
-Comparison Operators:  
+Comparison Operators: 
+<img width="575" height="652" alt="image" src="https://github.com/user-attachments/assets/0443cb60-84d6-4d8b-80e6-04aabb158912" />
 
+IP Filters:
+<img width="571" height="699" alt="image" src="https://github.com/user-attachments/assets/bbb5112a-24f7-4ab4-8ed9-43ae72dcffd5" />
 
+**TCPDUMP**
 
+1. Specify the network interface
+   - i
+   - i any (any interface)
+   - i eth0
+     ip address show (ip a s): would show the available interfaces
 
+ <img width="1274" height="747" alt="image" src="https://github.com/user-attachments/assets/f54ea50a-ee09-4cd2-8e04-e6bb32f5f3c4" />
+
+ 2. Filtering
+    - host (host IP, host HOSTNAME)
+    - Source Host (src host IP or src host HOSTNAME)
+    - Destination (dst host IP or dst host HOSTNAME)
+    - Port (port PORT NUMBER)
+
+<img width="861" height="471" alt="image" src="https://github.com/user-attachments/assets/97866688-e580-439b-8aa0-84595cc9a219" />
 
 
 
