@@ -338,6 +338,64 @@ IP Filters:
 
 <img width="861" height="471" alt="image" src="https://github.com/user-attachments/assets/97866688-e580-439b-8aa0-84595cc9a219" />
 
+**NMAP: The Basics: Powerful open source network scanner**
+_
+NMAP Commands: _
+-sn : ping scan (nmap -sn <subnet>)
+-PS[portlist]
+-PA[portlist]
+-PU[portlist]
+-sL : confirms who the targets are without scanning. 
+-sT : connect scan (tries three way handshake with all ports to check which are open TCP ports. not very stealthy, because it completes the connection (syn, syn-ack, ack)
+-sS : sends a TCP SYN packet. sneakier than a connect scan as it only completes the first part of the handshake. less lows since no connection is established
+-sU : scans for UDP services
+-F : fast mode. Scans for the 100 most common ports (instead of the default 1000)
+-p[range]: allows to specify range (ex. -p10-1024 : scans port 10 - 1024, -p-25 : scans port 1 to 25
+-O : OS detection. Let's you know what OS the target is using
+-sV : version detection. if we need to gather more information about the target and what services are on that port. Critical when finding the SSH server version **
+-A : is -O, -sV (OS detection, Version scanning, traceroute and more. 
+-Pn : scan hosts that appear to be down
+-T0 : paranoid (slowest timing 9hrs)
+-T1 : sneaky (30 mins)
+-T2 : polite (40 sec)
+-T3 : normal (.15 sec)
+-T4 : aggressive (.13, sec)
+-v : verbose - real time scan progress
+-d : debugging-level output
+-oA : saves on all major formats
+-oN : saves on major output
+-oX : saves on XML output
+-oG L saves a grep-able output (userful for grep and awk)
+
+
+- Uses multiple ways to discover live hosts
+   - IP range using - : scans all the ip addresses from a range (ex. 192.168.0.1 to 192.168.0.10, you can write 192.168.0.1-10)
+   - IP subnet using / : scans the subnet (ex. 192.168.0.1/24, and this would be equivalent to 192.168.0.0-255
+   - Hostname: can target specifics hostname (ex. example.thm)
+   - To show all online hosts -sn (ping scan)
+  
+ - Ran example of nmap -sn <broadcast address>
+   - used ARP request (Address Resolution Protocol - are you up). only used in local networks
+   - does not create a lot of noise, just shows the live hosts without discovring what is running on them
+
+_Scanning TCP Ports_
+1. Most basic way is to telnet to the ports (TCP - 80, 443)
+   - Connect scan is -sT (tries to completed TCP three way handshake with all open TCP ports)
+2. Stealthier way is to -sS. Just completes the SYN portion of the three way handshake
+
+_Scanning UDP Ports_
+1. Can scan for DNS, DHCP, NTP, SNMP, VoIP
+2. nmap offeres -sU to scan for UDP
+
+_Scanning_
+1. Find open ports nmap <IP Address>
+   - HTTP port will take you to website. 132.212.12.3:8008
+ 
+<img width="1154" height="755" alt="image" src="https://github.com/user-attachments/assets/9922c41d-71d2-429b-82af-3d9d8d65ad9b" />
+
+<img width="1154" height="661" alt="image" src="https://github.com/user-attachments/assets/7770209d-5a07-4893-bfce-91a8f16af216" />
+
+<img width="1152" height="553" alt="image" src="https://github.com/user-attachments/assets/6ad43f73-95d9-49a9-b712-56e48d2aa379" />
 
 
 **WINDOWS**
