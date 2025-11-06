@@ -347,13 +347,14 @@ NMAP Commands: _
 -PU[portlist]
 -sL : confirms who the targets are without scanning. 
 -sT : connect scan (tries three way handshake with all ports to check which are open TCP ports. not very stealthy, because it completes the connection (syn, syn-ack, ack)
--sS : sends a TCP SYN packet. sneakier than a connect scan as it only completes the first part of the handshake. less lows since no connection is established
+_-sS : sends a TCP SYN packet. sneakier than a connect scan as it only completes the first part of the handshake. less lows since no connection is established_
+_-D : Decoy, creates a decoy IP address to cover your trackes (sudo nmap -sS -D 10.212.12.1 <target IP>_
 -sU : scans for UDP services
 -F : fast mode. Scans for the 100 most common ports (instead of the default 1000)
 -p[range]: allows to specify range (ex. -p10-1024 : scans port 10 - 1024, -p-25 : scans port 1 to 25
 -O : OS detection. Let's you know what OS the target is using
 -sV : version detection. if we need to gather more information about the target and what services are on that port. Critical when finding the SSH server version **
--A : is -O, -sV (OS detection, Version scanning, traceroute and more. 
+_-A : is -O, -sV (OS detection, Version scanning, traceroute and more. _
 -Pn : scan hosts that appear to be down
 -T0 : paranoid (slowest timing 9hrs)
 -T1 : sneaky (30 mins)
@@ -366,7 +367,6 @@ NMAP Commands: _
 -oN : saves on major output
 -oX : saves on XML output
 -oG L saves a grep-able output (userful for grep and awk)
-
 
 - Uses multiple ways to discover live hosts
    - IP range using - : scans all the ip addresses from a range (ex. 192.168.0.1 to 192.168.0.10, you can write 192.168.0.1-10)
@@ -396,6 +396,64 @@ _Scanning_
 <img width="1154" height="661" alt="image" src="https://github.com/user-attachments/assets/7770209d-5a07-4893-bfce-91a8f16af216" />
 
 <img width="1152" height="553" alt="image" src="https://github.com/user-attachments/assets/6ad43f73-95d9-49a9-b712-56e48d2aa379" />
+
+_
+[NMAP Tutorial to Find Network Vulns - NC](https://www.youtube.com/watch?v=4t4kBkMsDbQ)_
+
+Showing me the open 40, 883 ports (NOT Sneaky -sT): sudo nmap -sT -p 40, 443 192.313.1.0/24
+Showing me the open 40, 883 ports (Sneaky -sS): sudo nmap -sT -p 40, 443 192.313.1.0/24
+
+Running a vulnerability scan : sudo nmap --script vuln <target>
+
+**THM: Cryptography**
+
+- Crytography is used to make the connections safe - protects the confidentiality, integrity, and authenticity
+- PCI DSS (Payment cared indusctry data security standard): what companies must use to encrypt credit card info
+
+Plaintext (photo, text, etc..) --> Ciphertext --> Key --> Decrypt ---> Plaintext --> Receipient
+
+Ceasar Cipher: oldest most simple cipher
+- shifting each key to the right by a certain number
+- Ex: TRYHACKME, Key 3 (right)
+   - Cipher: WUBKDFNPH
+   - Decryption: Shift to the left
+ 
+ Symmetric Encryption: using the same key to encrypt and decrypt
+ Asymmetric Encryption: Uses a pair of keys. One to encrypt and the other to decript
+
+ Authentication: Making sure you're communicating with the right person
+ Authenticity: Making sure that you can verify the incformation is coming from the claimed source
+ Integrity: Ensuring that no one changes the data you exchange
+ Confidentiality: Preventing an unauthorized party from eavesdropping on your conversations
+
+Secret code = Symmetric Encryption Cipher and Key
+Lock = Public Key
+Lock's Key = Private Key
+
+RSA Key (public-key encryption, asymmetric): Multiplying two large prime numbers
+- comes up during Capture the Flags
+- 
+    p and q are large prime numbers
+    n is the product of p and q
+    The public key is n and e
+    The private key is n and d
+    m is used to represent the original message, i.e., plaintext
+    c represents the encrypted text, i.e., ciphertext
+
+- [RSACTFTOOL](https://github.com/RsaCtfTool/RsaCtfTool)
+
+Diffie-Hellman Key Exchange: Establishing a shared secret between two parties
+
+<img width="966" height="714" alt="image" src="https://github.com/user-attachments/assets/9f8c8aff-758f-48b4-be18-731c2146276b" />
+
+PGP = Pretty Good Privacy
+- software that implements encryption for encrypting files, digital signing and more.
+- GnuPG or GPG is an open-source implementation of the OpenPGP standard
+
+GPG = Used to protect confidentiality of email messages
+- Need to decrypt files in CTFs
+- to import key: gpg --import backup.key
+- to decrypt messages: gpg --decrypt confidential_message.gpg
 
 
 **WINDOWS**
@@ -507,6 +565,10 @@ Invoke-command: godlike command that can send commands to remove services
 
 **Linux Commands**
 
+ssh-keygen: generate an SSH key pair
+1. ssh -i privateKeyFileName user@host
+2. chmod 600 gives read and write permission
+  
 curl ipinfo.io: will give my exact IP address
 - curl ipinfo.io/IP_address: will give exact location of said address
 find .:This initiates the search in the current directory (.) and its subdirectories.
