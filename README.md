@@ -455,6 +455,39 @@ GPG = Used to protect confidentiality of email messages
 - to import key: gpg --import backup.key
 - to decrypt messages: gpg --decrypt confidential_message.gpg
 
+**THM: Hashing Basics**
+
+Hash values: fixed-size string or characters that is computed by a hash function. 
+Hash function: takes an input of an arbitrary size and returns an output of fixed length. ie - a hash value
+
+Different types of hashes
+- hexdump -C
+- md5sum
+- sha1sum
+- sha256sum
+
+Insecure Passwords
+- Plaintext
+   - rockyou.txt = company that developed social media apps and widgets, had a breach, stored their passwords in plaintext, contains over 14 million passwords
+- Insecure encryption algorithm
+- Insecure hash function
+
+Linux - Hashes are stored in /etc/shadow ; only readable by root
+The encrypted password field contains the hashed passphrase with four components: prefix (algorithm id), options (parameters), salt, and hash. It is saved in the format $prefix$options$salt$hash
+
+Hash Types: https://hashcat.net/wiki/doku.php?id=example_hashes
+
+_Cracking Hashes_
+
+Use hashcat to crack the hash, $2a$06$7yoU3Ng8dHTXphAg913cyO6Bjs3K5lBnwq5FJyA6d01pMSrddr1ZG, saved in ~/Hashing-Basics/Task-6/hash1.txt.       hashcat -m 3200 -a 0 ~/Hashing-Basics/Task-6/hash1.txt rockyou.txt
+
+Use hashcat to crack the SHA2-256 hash, 9eb7ee7f551d2f0ac684981bd1f1e2fa4a37590199636753efe614d4db30e8e1, saved in saved in ~/Hashing-Basics/Task-6/hash2.txt.
+  hashcat -m 1400 -a 0 hash2.txt ~/rockyou.txt
+
+Use hashcat to crack the hash, $6$GQXVvW4EuM$ehD6jWiMsfNorxy5SINsgdlxmAEl3.yif0/c3NqzGLa0P.S7KRDYjycw5bnYkF5ZtB8wQy8KnskuWQS3Yr1wQ0, saved in ~/Hashing-Basics/Task-6/hash3.txt.
+  hashcat -m 1800 -a 0 hash3.txt ~/rockyou.txt
+
+
 
 **WINDOWS**
 
@@ -564,6 +597,8 @@ Invoke-command: godlike command that can send commands to remove services
 
 
 **Linux Commands**
+
+man 5 crypt: detials about the different password prefixes
 
 ssh-keygen: generate an SSH key pair
 1. ssh -i privateKeyFileName user@host
