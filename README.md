@@ -341,31 +341,54 @@ IP Filters:
 **NMAP: The Basics: Powerful open source network scanner**
 _
 NMAP Commands: _
+
 -sn : ping scan (nmap -sn <subnet>)
+
 -PS[portlist]
+
 -PA[portlist]
+
 -PU[portlist]
+
 -sL : confirms who the targets are without scanning. 
+
 -sT : connect scan (tries three way handshake with all ports to check which are open TCP ports. not very stealthy, because it completes the connection (syn, syn-ack, ack)
+
 _-sS : sends a TCP SYN packet. sneakier than a connect scan as it only completes the first part of the handshake. less lows since no connection is established_
+
 _-D : Decoy, creates a decoy IP address to cover your trackes (sudo nmap -sS -D 10.212.12.1 <target IP>_
+
 -sU : scans for UDP services
+
 -F : fast mode. Scans for the 100 most common ports (instead of the default 1000)
+
 -p[range]: allows to specify range (ex. -p10-1024 : scans port 10 - 1024, -p-25 : scans port 1 to 25
+
 -O : OS detection. Let's you know what OS the target is using
+
 -sV : version detection. if we need to gather more information about the target and what services are on that port. Critical when finding the SSH server version **
+
 _-A : is -O, -sV (OS detection, Version scanning, traceroute and more. _
+
 -Pn : scan hosts that appear to be down
+
 -T0 : paranoid (slowest timing 9hrs)
+
 -T1 : sneaky (30 mins)
 -T2 : polite (40 sec)
 -T3 : normal (.15 sec)
 -T4 : aggressive (.13, sec)
+
 -v : verbose - real time scan progress
+
 -d : debugging-level output
+
 -oA : saves on all major formats
+
 -oN : saves on major output
+
 -oX : saves on XML output
+
 -oG L saves a grep-able output (userful for grep and awk)
 
 - Uses multiple ways to discover live hosts
@@ -487,6 +510,57 @@ Use hashcat to crack the SHA2-256 hash, 9eb7ee7f551d2f0ac684981bd1f1e2fa4a375901
 Use hashcat to crack the hash, $6$GQXVvW4EuM$ehD6jWiMsfNorxy5SINsgdlxmAEl3.yif0/c3NqzGLa0P.S7KRDYjycw5bnYkF5ZtB8wQy8KnskuWQS3Yr1wQ0, saved in ~/Hashing-Basics/Task-6/hash3.txt.
   hashcat -m 1800 -a 0 hash3.txt ~/rockyou.txt
 
+**John the Ripper**
+
+[Hask Identifier](https://hashes.com/en/tools/hash_identifier)
+
+john [options] [file path]
+    john: Invokes the John the Ripper program
+    [options]: Specifies the options you want to use
+    [file path]: The file containing the hash you’re trying to crack; if it’s in the same directory, you won’t need to name a path, just the file.
+
+Once you have identified the hash that you’re dealing with, you can tell John to use it while cracking the provided hash using the following syntax:
+
+john --format=[format] --wordlist=[path to wordlist] [path to file]
+
+    --format=: This is the flag to tell John that you’re giving it a hash of a specific format and to use the following format to crack it
+    [format]: The format that the hash is in
+
+Example: john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash_to_crack.txt
+
+ntlm.txt = --format needs to change to --format=NT
+
+Single Crack Mode: john --single --format=raw-sha256 hashes.txt
+- note: make sure to add the user name to the hash before running John
+
+Cracking password protected ZIP files:
+
+zip2john [options] [zip file] > [output file]
+
+    [options]: Allows you to pass specific checksum options to zip2john; this shouldn’t often be necessary
+    [zip file]: The path to the Zip file you wish to get the hash of
+    >: This redirects the output from this command to another file
+    [output file]: This is the file that will store the output
+
+  Example: zip2john zipfile.zip > zip_hash.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt zip_hash.txt
+
+Cracking Rar2John Files
+
+rar2john [rar file] > [output file]
+
+    rar2john: Invokes the rar2john tool
+    [rar file]: The path to the RAR file you wish to get the hash of
+    >: This redirects the output of this command to another file
+    [output file]: This is the file that will store the output from the command
+
+SSH2John - used to hack SSH files
+ssh2john [id_rsa private key file] > [output file]
+
+    ssh2john: Invokes the ssh2john tool
+    [id_rsa private key file]: The path to the id_rsa file you wish to get the hash of
+    >: This is the output director. We’re using it to redirect the output from this command to another file.
+    [output file]: This is the file that will store the output from
 
 
 **WINDOWS**
@@ -597,6 +671,8 @@ Invoke-command: godlike command that can send commands to remove services
 
 
 **Linux Commands**
+
+python3 hash-id py: launches the hash identifier on kali
 
 man 5 crypt: detials about the different password prefixes
 
